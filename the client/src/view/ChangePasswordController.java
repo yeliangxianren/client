@@ -43,12 +43,12 @@ public class ChangePasswordController implements Initializable{
 			path = path + '/' + fundid + '/' + newPassword;
 //			System.out.print(path);
 			
-				cr = new HttpCommon().doHttp(path, "POST", null);
 			if(!oldPassword.equals(Client2Controller.oldpassword)) {
 				Alert done = new Alert(Alert.AlertType.CONFIRMATION,"旧密码错误");		 
 				done.showAndWait();
 				application.gotoclient();
-			}else {			
+			}else {	
+				cr = new HttpCommon().doHttp(path, "POST", null);
 				Gson gson = new Gson();
 				Map<String, Object> map = new HashMap<String, Object>();
 				map = gson.fromJson(cr.getResultJSON(), map.getClass());
@@ -63,7 +63,6 @@ public class ChangePasswordController implements Initializable{
 					alert.setHeaderText("修改失败");
 					alert.setContentText((String)map.get("cause"));
 					alert.showAndWait();
-					application.gotoclient();
 				}
 			}
 		/*Alert error = new Alert(Alert.AlertType.ERROR,"�ɹ�:�������޸�");		 
