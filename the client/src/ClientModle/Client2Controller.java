@@ -23,6 +23,9 @@ public class Client2Controller implements Initializable {
 	@FXML 
 	private TextField account;
 	
+	public static String fundid;
+	public static String oldpassword;
+	
 	private Main application;
 	
 	public void setApp(Main app) {
@@ -35,6 +38,9 @@ public class Client2Controller implements Initializable {
 		FundAccount Login = new FundAccount();
 		String Accounts = account.getText();
 		String Passwords = password.getText();
+		
+		fundid = Accounts;
+		oldpassword = Passwords;
 		Login.setFundId(Integer.parseInt(Accounts));
 	    Login.setPassword(Passwords);
 		String json = new Gson().toJson(Login);

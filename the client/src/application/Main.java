@@ -6,7 +6,7 @@ import java.util.logging.Logger;
 
 import ClientModle.Client2Controller;
 import ClientModle.TheClientController;
-import ClientModle.ChangePasswordController;
+import view.ChangePasswordController;
 import ClientModle.ClientSearchController;
 import javafx.fxml.FXMLLoader;
 import java.io.InputStream;
