@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane id="backgrouddd" stylesheets="@ClientLoginUI.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ClientModle.ClientSearchController">
+<BorderPane id="backgrouddd" stylesheets="@ClientLoginUI.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ClientSearchController">
    <center>
       <AnchorPane prefHeight="508.0" prefWidth="612.0" BorderPane.alignment="CENTER">
          <children>
             <HBox prefHeight="508.0" prefWidth="200.0">
                <children>
-                  <GridPane prefHeight="508.0" prefWidth="201.0">
+                  <GridPane fx:id="fundIdLabel" prefHeight="508.0" prefWidth="201.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
@@ -31,26 +32,54 @@
                            <font>
                               <Font size="25.0" />
                            </font></Label>
-                        <Label id="UserNameLable" text="xxx" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </Label>
-                        <Label id="StockNumLable" text="持有股票数：xxx" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </Label>
-                        <Label id="StockTotlePriceLable" text="持有股票成本：xxx" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </Label>
-                        <Button mnemonicParsing="false" onAction="#Password_Change" text="修改密码" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                        <Button mnemonicParsing="false" onAction="#Password_Change" text="修改密码" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Button>
+                        <Label text="Fund ID" GridPane.rowIndex="1">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </Label>
+                        <Label fx:id="fundIdLabel" text="Label" GridPane.rowIndex="1">
+                           <GridPane.margin>
+                              <Insets left="100.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label text="Security ID" GridPane.rowIndex="2">
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="securitiesIdLabel" text="Label" GridPane.rowIndex="2">
+                           <GridPane.margin>
+                              <Insets left="100.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="balanceLabel" text="Label" GridPane.rowIndex="3">
+                           <GridPane.margin>
+                              <Insets left="100.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="interestLabel" text="Label" GridPane.rowIndex="4">
+                           <GridPane.margin>
+                              <Insets left="100.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label text="Balance" GridPane.rowIndex="3">
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label text="Interet" GridPane.rowIndex="4">
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                        </Label>
                      </children>
                   </GridPane>
                </children>

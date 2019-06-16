@@ -1,11 +1,18 @@
-package ClientModle;
+package view;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import com.google.gson.Gson;
+
 import java.util.List;
 import java.util.ArrayList;
 
 import application.Main;
+import ClientModle.Client2Controller;
+import ClientModle.CustomResp;
+import ClientModle.FundAccount;
+import ClientModle.HttpCommon;
 import ClientModle.Stock;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -51,6 +58,16 @@ public class TheClientController implements Initializable {
 	
 	@FXML
 	private TableColumn<Stock, String> Pri;
+	
+	@FXML
+	private Label fundIdLabel;
+	@FXML
+	private Label securitiesIdLabel;
+	@FXML
+	private Label balanceLabel;
+	@FXML
+	private Label interestLabel;
+
 
 	private Main application;
 	public void setApp(Main app) {
@@ -65,6 +82,21 @@ public class TheClientController implements Initializable {
 	public void Password_Change(ActionEvent event)
 	{
 		application.gotochangepassword();
+	}
+	
+	public void updateLabels() {
+		String path = "/fund/" + Client2Controller.fundid;
+		CustomResp cr = new HttpCommon().doHttp(path, "GET", null);
+	     
+		Gson gson = new Gson();
+		FundAccount fundAccount = new FundAccount();
+		fundAccount = gson.fromJson(cr.getObjectJSON(), fundAccount.getClass());
+		
+		fundIdLabel.setText(fundAccount.getFundId() + "");
+		securitiesIdLabel.setText(fundAccount.getSecuritiesId() + "");
+		balanceLabel.setText(fundAccount.getBalance() + "");
+		interestLabel.setText(fundAccount.getInterest() + "");
+		
 	}
 	
     public void initialize(URL url, ResourceBundle rb){

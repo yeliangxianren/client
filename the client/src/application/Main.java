@@ -5,9 +5,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import ClientModle.Client2Controller;
-import ClientModle.TheClientController;
+import view.TheClientController;
 import view.ChangePasswordController;
-import ClientModle.ClientSearchController;
+import view.ClientSearchController;
 import javafx.fxml.FXMLLoader;
 import java.io.InputStream;
 import javafx.fxml.Initializable;
@@ -54,6 +54,7 @@ public class Main extends Application {
 		try {
 			stage.setTitle("Client");
 			TheClientController client = (TheClientController) replaceSceneContent("/view/Client.fxml");
+			client.updateLabels();
 			client.setApp(this);
 		}catch(Exception e) {
             e.printStackTrace();

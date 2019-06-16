@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane id="backgrouddd" stylesheets="@ClientLoginUI.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ClientModle.TheClientController">
+<BorderPane id="backgrouddd" stylesheets="@ClientLoginUI.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.TheClientController">
    <center>
       <AnchorPane prefHeight="508.0" prefWidth="612.0" BorderPane.alignment="CENTER">
          <children>
@@ -32,32 +32,47 @@
                            <font>
                               <Font size="25.0" />
                            </font></Label>
-                        <Label id="UserNameLable" text="马冬梅" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-                           <font>
-                              <Font size="15.0" />
-                           </font>
-                        </Label>
-                        <Button mnemonicParsing="false" onAction="#Password_Change" text="修改密码" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                        <Button mnemonicParsing="false" onAction="#Password_Change" text="修改密码" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Button>
-                        <Label text="持有股票数：" GridPane.rowIndex="2">
+                        <Label text="Fund ID" GridPane.rowIndex="1">
                            <GridPane.margin>
                               <Insets left="10.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label text="持有股票成本：" GridPane.rowIndex="3">
+                        <Label text="Security ID" GridPane.rowIndex="2">
                            <GridPane.margin>
-                              <Insets left="5.0" />
+                              <Insets left="10.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label text="Label" GridPane.rowIndex="2">
+                        <Label text="Balance" GridPane.rowIndex="3">
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label text="Interest" GridPane.rowIndex="4">
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="fundIdLabel" text="Label" GridPane.rowIndex="1">
                            <GridPane.margin>
                               <Insets left="100.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label text="Label" GridPane.rowIndex="3">
+                        <Label fx:id="securitiesIdLabel" text="Label" GridPane.rowIndex="2">
+                           <GridPane.margin>
+                              <Insets left="100.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="balanceLabel" text="Label" GridPane.rowIndex="3">
+                           <GridPane.margin>
+                              <Insets left="100.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="interestLabel" text="Label" GridPane.rowIndex="4">
                            <GridPane.margin>
                               <Insets left="100.0" />
                            </GridPane.margin>
