@@ -1,4 +1,3 @@
-/.settings/
 /target/
  
 # built application files
@@ -15,6 +14,7 @@
 # generated files
 bin/
 gen/
+.settings/
  
 # Eclipse project files
 .classpath
