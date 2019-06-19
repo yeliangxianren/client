@@ -7,22 +7,19 @@ import java.util.ResourceBundle;
 
 import com.google.gson.Gson;
 
-import ClientModle.Client2Controller;
+import ClientModle.LoginUIController;
 import ClientModle.CustomResp;
 import ClientModle.HttpCommon;
 import application.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import com.jfoenix.controls.JFXTextField;
 import javafx.scene.control.Alert;
-import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
-public class ChangePasswordController implements Initializable{
-	@FXML 
-	private TextField Old_Password;
-	
-	@FXML 
-	private TextField New_Password;
+public class Change_PasswordController implements Initializable{
+	@FXML JFXTextField Old_Password;
+	@FXML JFXTextField New_Password;
 	
 	private Main application;
 	
@@ -33,17 +30,15 @@ public class ChangePasswordController implements Initializable{
 	@FXML 
 	public void Is_Change(ActionEvent event)
 	{
-		//accesss
-		//faile
+
 			String path = "/fund/update/password";
-			String fundid = Client2Controller.fundid;
+			String fundid = LoginUIController.fundid;
 			String oldPassword = Old_Password.getText();
 			String newPassword = New_Password.getText();
 			CustomResp cr;
 			path = path + '/' + fundid + '/' + newPassword;
-//			System.out.print(path);
 			
-			if(!oldPassword.equals(Client2Controller.oldpassword)) {
+			if(!oldPassword.equals(LoginUIController.oldpassword)) {
 				Alert done = new Alert(Alert.AlertType.CONFIRMATION,"旧密码错误");		 
 				done.showAndWait();
 				application.gotoclient();
@@ -65,11 +60,7 @@ public class ChangePasswordController implements Initializable{
 					alert.showAndWait();
 				}
 			}
-		/*Alert error = new Alert(Alert.AlertType.ERROR,"�ɹ�:�������޸�");		 
-		error.showAndWait();
-		application.gotochangepassword();*/
 	}
-	
 	 @Override
 	    public void initialize(URL url, ResourceBundle rb){}
 }

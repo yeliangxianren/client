@@ -14,14 +14,14 @@ import ClientModle.FundAccount;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
-
+import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.controls.JFXPasswordField;
 import java.lang.Object;
-public class Client2Controller implements Initializable {
+public class LoginUIController implements Initializable {
 	@FXML 
-	private PasswordField password;
+	private JFXPasswordField password;
 	@FXML 
-	private TextField account;
+	private JFXTextField account;
 	
 	public static String fundid;
 	public static String oldpassword;

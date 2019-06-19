@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane prefHeight="497.0" prefWidth="800.0" stylesheets="@ClientLoginUI.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ClientUI_UserController">
+<BorderPane prefHeight="497.0" prefWidth="800.0" stylesheets="@ClientLoginUI.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <AnchorPane prefHeight="514.0" prefWidth="800.0" BorderPane.alignment="CENTER">
          <children>
@@ -28,7 +28,7 @@
                     </rowConstraints>
                      <children>
                         <Circle fill="WHITE" radius="41.0" stroke="WHITE" strokeType="OUTSIDE" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-                        <Button id="Fund_background" mnemonicParsing="false" prefHeight="62.0" prefWidth="62.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                        <Button id="Fund_background" mnemonicParsing="false" prefHeight="55.0" prefWidth="62.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
                         <Label text="Welcome" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
                            <font>
                               <Font size="20.0" />
@@ -39,8 +39,7 @@
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <JFXButton buttonType="RAISED" onAction="#Password_Change" text="修改密码" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-                        <JFXButton id="Back" buttonType="RAISED" onAction="#Back_Client" prefHeight="20.0" prefWidth="20.0" ripplerFill="#c73838" text="  " textOverrun="CLIP" GridPane.halignment="LEFT" GridPane.valignment="TOP" />
+                        <Button mnemonicParsing="false" onAction="#Password_Change" text="修改密码" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
                      </children>
                   </GridPane>
                </children>
@@ -66,11 +65,11 @@
                         <Label text="利率：" GridPane.columnIndex="2" GridPane.halignment="RIGHT" />
                         <Label text="余额：" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
                         <Label text="持有均价：" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
-                        <TextField fx:id="Fund_id" GridPane.columnIndex="1" />
-                        <TextField fx:id="Securities_id" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField GridPane.columnIndex="1" />
+                        <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <TextField fx:id="Interest" GridPane.columnIndex="3" />
-                        <TextField fx:id="Balance" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                        <TextField GridPane.columnIndex="3" />
+                        <TextField GridPane.columnIndex="3" GridPane.rowIndex="1" />
                         <TextField GridPane.columnIndex="3" GridPane.rowIndex="2" />
                      </children>
                   </GridPane>

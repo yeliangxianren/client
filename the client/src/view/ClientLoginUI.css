@@ -11,30 +11,40 @@
 
 #Fund_background {
 	-fx-background-image: url("../img/user.jpg");
+	-fx-background-size:contain;
+    -fx-background-repeat: stretch;   
+}
+#Back {
+	-fx-background-image: url("../img/back.jpg");
+	-fx-background-size:contain;
+    -fx-background-repeat: stretch;   
+}
+#search {
+	-fx-background-image: url("../img/search.jpg");
 	-fx-background-size:cover ;
     -fx-background-repeat: stretch;   
 }
+
 #left_background {
-	-fx-background-image: url("../img/background.jpg");
+	-fx-background-image: url("../img/left_background.jpg");
 	-fx-background-size:cover ;
     -fx-background-repeat: stretch;   
 }
-
-
+   
 #stock_search {
 	-fx-background-image: url("../img/stock_search.png");
-	-fx-background-size:cover ;
+	-fx-background-size:contain;
     -fx-background-repeat: stretch;   
 }
 
 #stock_holding {
 	-fx-background-image: url("../img/stock_holding.png");
-	-fx-background-size:cover ;
+	-fx-background-size:contain;
     -fx-background-repeat: stretch;   
 }
 
 #stock_business {
 	-fx-background-image: url("../img/stock_business.png");
-	-fx-background-size:cover ;
+	-fx-background-size:contain;
     -fx-background-repeat: stretch;   
 }
