@@ -14,7 +14,8 @@ public class Stock {
     private final StringProperty stockTotal;
     
     public Stock(String stockCode, String stockName, String stockPrice,
-    		String stockState, String stockLimit, String closingPrice, String stockAmount, String stockTotal) {
+    		String stockState, String stockLimit, String closingPrice, 
+    		String stockAmount, String stockTotal) {
     	this.stockCode = new SimpleStringProperty(stockCode);
     	this.stockName = new SimpleStringProperty(stockName);
     	this.stockPrice = new SimpleStringProperty(stockPrice);
