@@ -10,9 +10,7 @@ import java.net.URL;
 
 
 public class HttpCommon {
-//    public static String url = "http://localhost:8010";
     public static String url = "http://139.155.104.140:8010";
-//    public static String password = "bgroup";
     private static String cookie = null;
 
     public HttpCommon() {
@@ -59,11 +57,11 @@ public class HttpCommon {
                 }
                 conn.connect();
             } catch (ConnectException e) {
-                return new CustomResp(new Result("杩炴帴鏈嶅姟鍣ㄥけ璐�"), null);
+                return new CustomResp(new Result("连接服务器失败"), null);
             }
 
             if (cookie == null) {
-                // 閼惧嘲褰嘋ookie
+                // 获取Cookie
                 cookie = conn.getHeaderField("Set-Cookie");
                 if (cookie != null)
                     cookie = cookie.split(";\40")[0];
@@ -79,13 +77,11 @@ public class HttpCommon {
             } else {
                 System.out.println(path);
                 System.out.println(data);
-                return new CustomResp(new Result("鏈嶅姟鍣ㄥ搷搴斿紓甯�(HTTP鍝嶅簲鐮�:" + code + ")"));
+                return new CustomResp(new Result("服务器响应异常(HTTP响应码:" + code + ")"));
             }
         } catch (MalformedURLException e) {
-            // TODO 閼奉亜濮╅悽鐔稿灇閻拷 catch 閸э拷
             e.printStackTrace();
         } catch (IOException e) {
-            // TODO 閼奉亜濮╅悽鐔稿灇閻拷 catch 閸э拷
             e.printStackTrace();
         }
         return null;

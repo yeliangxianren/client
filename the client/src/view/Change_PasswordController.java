@@ -41,7 +41,6 @@ public class Change_PasswordController implements Initializable{
 			if(!oldPassword.equals(LoginUIController.oldpassword)) {
 				Alert done = new Alert(Alert.AlertType.CONFIRMATION,"旧密码错误");		 
 				done.showAndWait();
-				application.gotoclient();
 			}else {	
 				cr = new HttpCommon().doHttp(path, "POST", null);
 				Gson gson = new Gson();
@@ -51,7 +50,7 @@ public class Change_PasswordController implements Initializable{
 				if((boolean)map.get("status")) {
 					Alert done = new Alert(Alert.AlertType.CONFIRMATION,"成功:修改成功");		 
 					done.showAndWait();
-					application.gotoclient();
+					
 				}else {
 					Alert alert = new Alert(AlertType.INFORMATION);
 					alert.setTitle("ERROR");

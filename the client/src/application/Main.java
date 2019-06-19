@@ -31,15 +31,12 @@ public class Main extends Application {
 	private Stage stage;
 	private Scene scene;
 	
-	@Override
-
-	 public void start(Stage primarystage) {
+	public void start(Stage primarystage) {
 		try {
 			stage = primarystage;
 			stage.getIcons().clear();
 	        stage.getIcons().add(new Image("/img/title.jpg"));
-	        gotoclient_user();
-//	        gotologin(); // fundId == 2, password == 1111
+	        gotologin(); 
 			stage.show();
 		}catch(Exception e) {
 	            e.printStackTrace();
@@ -60,17 +57,16 @@ public class Main extends Application {
 	public void changepassword()
 	{
 		try {
-		Stage primaryStage = new Stage();
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Changepassword.fxml"));
-		Parent root = loader.load();
-		
-		Change_PasswordController controller = loader.getController();
-		//primaryStage.setTitle("修改密码");
-		primaryStage.setScene(new Scene(root));
-		primaryStage.show();
+			Stage primaryStage = new Stage();
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Changepassword.fxml"));
+			Parent root = loader.load();
+			
+			Change_PasswordController controller = loader.getController();
+			//primaryStage.setTitle("修改密码");
+			primaryStage.setScene(new Scene(root));
+			primaryStage.show();
 		}catch(Exception e) {
 	      e.printStackTrace();
-	
 	}
 }
 	public void gotoclient_user()

@@ -54,6 +54,5 @@ public class ClientUI_UserController implements Initializable {
 		Securities_id.setText(fundAccount.getSecuritiesId() + "");
 		Balance.setText(fundAccount.getBalance() + "");
 		Interest.setText(fundAccount.getInterest() + "");
-		
-	    }
+	}
 }

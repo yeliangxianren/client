@@ -66,12 +66,12 @@
                         <Label text="利率：" GridPane.columnIndex="2" GridPane.halignment="RIGHT" />
                         <Label text="余额：" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
                         <Label text="持有均价：" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
-                        <TextField fx:id="Fund_id" GridPane.columnIndex="1" />
-                        <TextField fx:id="Securities_id" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <TextField fx:id="Interest" GridPane.columnIndex="3" />
-                        <TextField fx:id="Balance" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                        <TextField GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                        <TextField fx:id="Fund_id" editable="false" GridPane.columnIndex="1" />
+                        <TextField fx:id="Securities_id" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <TextField fx:id="Interest" editable="false" GridPane.columnIndex="3" />
+                        <TextField fx:id="Balance" editable="false" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                        <TextField editable="false" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                      </children>
                   </GridPane>
                </children>
