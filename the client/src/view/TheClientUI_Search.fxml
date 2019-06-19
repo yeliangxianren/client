@@ -44,7 +44,7 @@
                   </GridPane>
                </children>
             </HBox>
-            <HBox layoutX="191.0" layoutY="109.0" prefHeight="383.0" prefWidth="606.0">
+            <HBox layoutX="191.0" layoutY="109.0" prefHeight="383.0" prefWidth="606.0" AnchorPane.bottomAnchor="40.0" AnchorPane.topAnchor="100.0">
                <children>
                   <TableView fx:id="stockTable" prefHeight="383.0" prefWidth="729.0">
                     <columns>
@@ -81,6 +81,11 @@
                         <Button id="search" mnemonicParsing="false" onAction="#Is_Search" prefHeight="30.0" prefWidth="30.0" text=" " GridPane.columnIndex="2" GridPane.rowIndex="1" />
                      </children>
                   </GridPane>
+               </children>
+            </HBox>
+            <HBox layoutX="689.0" layoutY="457.0">
+               <children>
+                  <Button fx:id="buy" layoutX="689.0" layoutY="457.0" mnemonicParsing="false" onAction="#handleBuy" text="购    买" />
                </children>
             </HBox>
          </children>

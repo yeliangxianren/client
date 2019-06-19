@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.InputCmdInfoController">
+   <children>
+      <TextField fx:id="stockCountTF" layoutX="110.0" layoutY="160.0" />
+      <TextField fx:id="stockPriceTF" layoutX="110.0" layoutY="224.0" />
+      <Label layoutX="41.0" layoutY="164.0" text="数    量" />
+      <Label layoutX="41.0" layoutY="228.0" text="价    格" />
+      <Label layoutX="94.0" layoutY="68.0" text="确认挂单">
+         <font>
+            <Font size="29.0" />
+         </font>
+      </Label>
+      <HBox layoutX="123.0" layoutY="327.0" spacing="20.0" AnchorPane.rightAnchor="20.0">
+         <children>
+            <Button fx:id="sure" layoutX="123.0" layoutY="327.0" mnemonicParsing="false" onAction="#handleSure" text="确    认" />
+         </children>
+         <padding>
+            <Insets right="20.0" />
+         </padding>
+      </HBox>
+   </children>
+</AnchorPane>

@@ -1,5 +1,6 @@
 package view;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -12,15 +13,22 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.Alert.AlertType;
+import javafx.stage.Stage;
+import javafx.scene.control.Button;
 
 import com.jfoenix.controls.JFXTextField;
 
+import ClientModle.Command;
 import ClientModle.CustomResp;
 import ClientModle.HttpCommon;
+import ClientModle.LoginUIController;
 import ClientModle.Stock;
 
 
@@ -28,6 +36,9 @@ import ClientModle.Stock;
 public class TheClientUI_SearchController{
 	@FXML 
 	JFXTextField Search_id;
+	
+	@FXML
+	private Button buy;
 	
 	private ObservableList<Stock> stockData = FXCollections.observableArrayList();
 	
@@ -50,6 +61,10 @@ public class TheClientUI_SearchController{
 	@FXML
 	private TableColumn<Stock, String> stockTotalColumn;
 
+	private int stockCount;
+	private double stockPrice;
+	public Stage primaryStage;
+	
 	@FXML
 	private void initialize() {		
 		stockTable.setItems(stockData);
@@ -63,6 +78,64 @@ public class TheClientUI_SearchController{
 		stockTotalColumn.setCellValueFactory(cellData -> cellData.getValue().stockTotalProperty());
 		
 		getAllStock();
+	}
+	
+	@FXML
+	private void handleBuy() {
+		int selectIndex = stockTable.getSelectionModel().getSelectedIndex();
+		if(selectIndex >= 0) {
+			int fundId;
+			String stockCode;
+			
+			fundId = Integer.parseInt(LoginUIController.fundid);
+			stockCode = stockTable.getSelectionModel().getSelectedItem().getStockCode();
+			
+			try {
+				primaryStage = new Stage();
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/InputCmdInfo.fxml"));
+				Parent root = loader.load();
+				InputCmdInfoController controller = loader.getController();
+				controller.setCsc(this);
+				primaryStage.setScene(new Scene(root));
+				primaryStage.showAndWait();
+			}catch(Exception e) {
+		      e.printStackTrace();
+		}
+			
+			Command cmd = new Command();
+			cmd.setFundId(fundId);
+			cmd.setStockCode(stockCode);
+			cmd.setCommandType(true);
+			cmd.setStockCount(stockCount);
+			cmd.setStockPrice(stockPrice);
+			
+			java.util.Date utilDate = new java.util.Date();
+	        Date sqlDate = new Date(utilDate.getTime());
+			cmd.setTime(sqlDate);
+			
+			String jsonCommand = new Gson().toJson(cmd);
+			CustomResp cr = new HttpCommon().doHttp("/command/upload", "POST", jsonCommand);
+			
+			Map<String, Object> mapResult = new HashMap<String, Object>();
+			mapResult = new Gson().fromJson(cr.getResultJSON(), mapResult.getClass());
+			System.out.print(mapResult);
+			if((boolean)mapResult.get("status")) {
+				Alert done = new Alert(Alert.AlertType.CONFIRMATION,"成功:操作成功");		 
+				done.showAndWait();
+			}else {
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setTitle("ERROR");
+				alert.setHeaderText("操作失败");
+				alert.setContentText((String)mapResult.get("cause"));
+				alert.showAndWait();
+			}
+		}else {
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("ERROR");
+			alert.setHeaderText("操作失败");
+			alert.setContentText("请先选中一个股票");
+			alert.showAndWait();
+		}
 	}
 	
 	public void getAllStock() {
@@ -93,6 +166,10 @@ public class TheClientUI_SearchController{
 		}
 	}
 	
+	public void setPara(int stockCount, double stockPrice) {
+		this.stockCount = stockCount;
+		this.stockPrice = stockPrice;
+	}
 	
 	private Main application;
 	public void setApp(Main app) {
