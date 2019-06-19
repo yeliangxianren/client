@@ -35,14 +35,14 @@ public class Main extends Application {
 
 	 public void start(Stage primarystage) {
 		try {
-		stage =  primarystage;
-		stage.getIcons().clear();
-        stage.getIcons().add(new Image("/img/title.jpg"));
-        gotoclient();
-        //gotoBusiness();
-		stage.show();
+			stage = primarystage;
+			stage.getIcons().clear();
+	        stage.getIcons().add(new Image("/img/title.jpg"));
+	        gotoclient_user();
+//	        gotologin(); // fundId == 2, password == 1111
+			stage.show();
 		}catch(Exception e) {
-            e.printStackTrace();
+	            e.printStackTrace();
         }
     }
 	
@@ -53,25 +53,25 @@ public class Main extends Application {
 			LoginUIController login = (LoginUIController) replaceSceneContent("/view/LoginUI.fxml");
 			login.setApp(this);
 		}catch(Exception e) {
-            e.printStackTrace();
+            e.printStackTrace(); 
         }
     }
 	
-public void changepassword()
-{
-	try {
-	Stage primaryStage = new Stage();
-	FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Changepassword.fxml"));
-	Parent root = loader.load();
+	public void changepassword()
+	{
+		try {
+		Stage primaryStage = new Stage();
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Changepassword.fxml"));
+		Parent root = loader.load();
+		
+		Change_PasswordController controller = loader.getController();
+		//primaryStage.setTitle("修改密码");
+		primaryStage.setScene(new Scene(root));
+		primaryStage.show();
+		}catch(Exception e) {
+	      e.printStackTrace();
 	
-	Change_PasswordController controller = loader.getController();
-	//primaryStage.setTitle("修改密码");
-	primaryStage.setScene(new Scene(root));
-	primaryStage.show();
-	}catch(Exception e) {
-      e.printStackTrace();
-
-}
+	}
 }
 	public void gotoclient_user()
 	{
@@ -120,7 +120,7 @@ public void changepassword()
         }
 	}
 
-	  private Object replaceSceneContent(String fxml) {
+	private Object replaceSceneContent(String fxml) {
 		  FXMLLoader loader = new FXMLLoader();
           loader.setLocation(Main.class.getResource(fxml));
           BorderPane bp = null;
@@ -133,8 +133,7 @@ public void changepassword()
           stage.setScene(scene);
           stage.setResizable(false);
           
-	      return loader.getController();
-	    
+	      return loader.getController();	    
 	  }
 
     public static void main(String[] args) {

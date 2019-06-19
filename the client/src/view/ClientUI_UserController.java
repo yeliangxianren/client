@@ -28,12 +28,12 @@ public class ClientUI_UserController implements Initializable {
         this.application = app;
     }
 	
-	
 	@FXML
 	public void Password_Change(ActionEvent event)
 	{
 		application.changepassword();
 	}
+	
 	public void Back_Client(ActionEvent event)
 	{
 		application.gotoclient();
