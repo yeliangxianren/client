@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.ResourceBundle;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import ClientModle.LoginUIController;
 import ClientModle.Stock;
@@ -73,6 +74,8 @@ public class ClientUI_UserController implements Initializable {
 	private TableColumn<Stock, String> stockAmountColumn;
 	@FXML
 	private TableColumn<Stock, String> stockTotalColumn;
+	@FXML
+	private TableColumn<Stock, String> averageHoldPrice;
 	
 	private Main application;
 	public void setApp(Main app) {
@@ -134,7 +137,8 @@ public class ClientUI_UserController implements Initializable {
 	        Date sqlDate = new Date(utilDate.getTime());
 			cmd.setTime(sqlDate);
 			
-			String jsonCommand = new Gson().toJson(cmd);
+			Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ").create();
+			String jsonCommand = gson.toJson(cmd);
 			CustomResp cr = new HttpCommon().doHttp("/command/upload", "POST", jsonCommand);
 			
 			Map<String, Object> mapResult = new HashMap<String, Object>();
@@ -182,9 +186,11 @@ public class ClientUI_UserController implements Initializable {
 			Map<String, Object> stockInfoTemp = new HashMap<String, Object>();
 			Gson gson = new Gson();
 			stockInfoTemp = gson.fromJson(stocks.get(i), stockInfoTemp.getClass());
-			stockData.add(new Stock(stockInfoTemp.get("stockCode") + "", stockInfoTemp.get("stockName") + "", stockInfoTemp.get("stockPrice") + "",
+			Stock stockTemp = new Stock(stockInfoTemp.get("stockCode") + "", stockInfoTemp.get("stockName") + "", stockInfoTemp.get("stockPrice") + "",
 					stockInfoTemp.get("stockState") + "", stockInfoTemp.get("stockLimit") + "", 
-					stockInfoTemp.get("closingPrice") + "",stockInfoTemp.get("stockAmount") + "",stockInfoTemp.get("stockTotal") + ""));
+					stockInfoTemp.get("closingPrice") + "",stockInfoTemp.get("stockAmount") + "",stockInfoTemp.get("stockTotal") + "");
+			stockTemp.setAverageHP();
+			stockData.add(stockTemp);
 		}
 	}
 
@@ -213,6 +219,7 @@ public class ClientUI_UserController implements Initializable {
 		closingPriceColumn.setCellValueFactory(cellData -> cellData.getValue().closingPriceProperty());
 		stockAmountColumn.setCellValueFactory(cellData -> cellData.getValue().stockAmountProperty());
 		stockTotalColumn.setCellValueFactory(cellData -> cellData.getValue().stockTotalProperty());
+		averageHoldPrice.setCellValueFactory(cellData -> cellData.getValue().averageHPProperty());
 		
 		getUserStock();
 	}

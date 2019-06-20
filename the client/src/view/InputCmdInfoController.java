@@ -1,8 +1,10 @@
 package view;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 
 public class InputCmdInfoController {
 	public int stockCount;
@@ -19,12 +21,20 @@ public class InputCmdInfoController {
 	
 	@FXML
 	private void handleSure() {
-		if(cuc != null) {
-			cuc.setPara(Integer.parseInt(stockCountTF.getText()), Double.parseDouble(stockPriceTF.getText()));
-			cuc.primaryStage.close();
+		if(stockCountTF.getText().equals("")||stockPriceTF.getText().equals("")) {
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("ERROR");
+			alert.setHeaderText("输入信息不完整");
+			alert.setContentText("请继续输入");
+			alert.showAndWait();
 		}else {
-			csc.setPara(Integer.parseInt(stockCountTF.getText()), Double.parseDouble(stockPriceTF.getText()));
-			csc.primaryStage.close();
+			if(cuc != null) {
+				cuc.setPara(Integer.parseInt(stockCountTF.getText()), Double.parseDouble(stockPriceTF.getText()));
+				cuc.primaryStage.close();
+			}else {
+				csc.setPara(Integer.parseInt(stockCountTF.getText()), Double.parseDouble(stockPriceTF.getText()));
+				csc.primaryStage.close();
+			}
 		}
 	}
 	

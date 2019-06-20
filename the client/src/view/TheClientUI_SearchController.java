@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import application.Main;
 import javafx.collections.FXCollections;
@@ -60,6 +61,8 @@ public class TheClientUI_SearchController{
 	private TableColumn<Stock, String> stockAmountColumn;
 	@FXML
 	private TableColumn<Stock, String> stockTotalColumn;
+	@FXML
+	private TableColumn<Stock, String> averageTransprice;
 
 	private int stockCount;
 	private double stockPrice;
@@ -76,6 +79,7 @@ public class TheClientUI_SearchController{
 		closingPriceColumn.setCellValueFactory(cellData -> cellData.getValue().closingPriceProperty());
 		stockAmountColumn.setCellValueFactory(cellData -> cellData.getValue().stockAmountProperty());
 		stockTotalColumn.setCellValueFactory(cellData -> cellData.getValue().stockTotalProperty());
+		averageTransprice.setCellValueFactory(cellData -> cellData.getValue().averageTPProperty());
 		
 		getAllStock();
 	}
@@ -109,11 +113,14 @@ public class TheClientUI_SearchController{
 			cmd.setStockCount(stockCount);
 			cmd.setStockPrice(stockPrice);
 			
+			
 			java.util.Date utilDate = new java.util.Date();
 	        Date sqlDate = new Date(utilDate.getTime());
 			cmd.setTime(sqlDate);
 			
-			String jsonCommand = new Gson().toJson(cmd);
+			Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ").create();
+			
+			String jsonCommand = gson.toJson(cmd);
 			CustomResp cr = new HttpCommon().doHttp("/command/upload", "POST", jsonCommand);
 			
 			Map<String, Object> mapResult = new HashMap<String, Object>();
@@ -160,9 +167,11 @@ public class TheClientUI_SearchController{
 			Map<String, Object> stockInfoTemp = new HashMap<String, Object>();
 			Gson gson = new Gson();
 			stockInfoTemp = gson.fromJson(stocks.get(i), stockInfoTemp.getClass());
-			stockData.add(new Stock(stockInfoTemp.get("stockCode") + "", stockInfoTemp.get("stockName") + "", stockInfoTemp.get("stockPrice") + "",
+			Stock stockTemp = new Stock(stockInfoTemp.get("stockCode") + "", stockInfoTemp.get("stockName") + "", stockInfoTemp.get("stockPrice") + "",
 					stockInfoTemp.get("stockState") + "", stockInfoTemp.get("stockLimit") + "", 
-					stockInfoTemp.get("closingPrice") + "",stockInfoTemp.get("stockAmount") + "",stockInfoTemp.get("stockTotal") + ""));
+					stockInfoTemp.get("closingPrice") + "",stockInfoTemp.get("stockAmount") + "",stockInfoTemp.get("stockTotal") + "");
+			stockTemp.setAverageTP();
+			stockData.add(stockTemp);
 		}
 	}
 	
@@ -194,9 +203,11 @@ public class TheClientUI_SearchController{
 				Map<String, Object> mapObject = new HashMap<String, Object>();
 				mapObject = gson.fromJson(cr.getObjectJSON(), mapObject.getClass());
 				stockData.clear();
-				stockData.add(new Stock(mapObject.get("stockCode") + "", mapObject.get("stockName") + "", mapObject.get("stockPrice") + "",
+				Stock stockTemp = new Stock(mapObject.get("stockCode") + "", mapObject.get("stockName") + "", mapObject.get("stockPrice") + "",
 						mapObject.get("stockState") + "", mapObject.get("stockLimit") + "", 
-						mapObject.get("closingPrice") + "", mapObject.get("stockAmount") + "",mapObject.get("stockTotal") + ""));
+						mapObject.get("closingPrice") + "", mapObject.get("stockAmount") + "",mapObject.get("stockTotal") + "");
+				stockTemp.setAverageTP();
+				stockData.add(stockTemp);
 			}else {
 				Alert alert = new Alert(AlertType.INFORMATION);
 				alert.setTitle("ERROR");
