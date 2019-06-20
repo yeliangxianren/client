@@ -10,11 +10,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-<BorderPane prefHeight="497.0" prefWidth="800.0" stylesheets="@ClientLoginUI.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ClientUI_UserController">
-   <top>
-      <AnchorPane prefHeight="514.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+<BorderPane prefHeight="488.0" prefWidth="800.0" stylesheets="@ClientLoginUI.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ClientUI_UserController">
+   <bottom>
+      <AnchorPane id="pre_background" prefHeight="499.0" prefWidth="800.0" BorderPane.alignment="CENTER">
          <children>
-            <HBox id="left_background" layoutX="14.0" layoutY="15.0" prefHeight="475.0" prefWidth="166.0">
+            <HBox id="left_background" layoutX="14.0" layoutY="16.0" prefHeight="468.0" prefWidth="166.0">
                <children>
                   <GridPane prefHeight="546.0" prefWidth="166.0">
                     <columnConstraints>
@@ -40,12 +40,11 @@
                            </font>
                         </Label>
                         <JFXButton buttonType="RAISED" onAction="#Password_Change" text="修改密码" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-                        <JFXButton id="Back" buttonType="RAISED" onAction="#Back_Client" prefHeight="20.0" prefWidth="20.0" ripplerFill="#c73838" text="  " textOverrun="CLIP" GridPane.halignment="LEFT" GridPane.valignment="TOP" />
                      </children>
                   </GridPane>
                </children>
             </HBox>
-            <HBox layoutX="188.0" layoutY="15.0" prefHeight="74.0" prefWidth="604.0">
+            <HBox layoutX="188.0" layoutY="15.0" prefHeight="75.0" prefWidth="604.0">
                <children>
                   <GridPane prefHeight="68.0" prefWidth="604.0">
                     <columnConstraints>
@@ -76,9 +75,9 @@
                   </GridPane>
                </children>
             </HBox>
-            <HBox layoutX="191.0" layoutY="115.0" prefHeight="377.0" prefWidth="606.0" AnchorPane.bottomAnchor="60.0" AnchorPane.topAnchor="100.0">
+            <HBox layoutX="191.0" layoutY="115.0" prefHeight="334.0" prefWidth="606.0" AnchorPane.bottomAnchor="65.0" AnchorPane.topAnchor="100.0">
                <children>
-                  <TableView fx:id="stockTable" prefHeight="377.0" prefWidth="598.0">
+                  <TableView fx:id="stockTable" prefHeight="277.0" prefWidth="598.0">
                     <columns>
                       <TableColumn fx:id="stockCodeColumn" prefWidth="75.0" text="股票代码" />
                       <TableColumn fx:id="stockNameColumn" prefWidth="75.0" text="股票名" />
@@ -95,13 +94,26 @@
                   </TableView>
                </children>
             </HBox>
-            <HBox layoutX="633.0" layoutY="467.0" spacing="20.0">
+            <HBox layoutX="484.0" layoutY="434.0" prefHeight="54.0" prefWidth="302.0">
                <children>
-                  <Button fx:id="refresh" layoutX="633.0" layoutY="467.0" mnemonicParsing="false" onAction="#handleRefresh" text="刷    新" />
-                  <Button fx:id="sell" layoutX="709.0" layoutY="467.0" mnemonicParsing="false" onAction="#handleSell" text="出    售" />
+                  <GridPane>
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Button id="button" maxWidth="50.0" mnemonicParsing="false" onAction="#handleRefresh" prefHeight="25.0" text="刷新" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                        <Button id="button" maxWidth="50.0" mnemonicParsing="false" onAction="#handleSell" prefHeight="25.0" text="出售" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                        <Button id="button" maxWidth="50.0" mnemonicParsing="false" onAction="#Back_Client" prefHeight="25.0" text="返回" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                     </children>
+                  </GridPane>
                </children>
             </HBox>
          </children>
       </AnchorPane>
-   </top>
+   </bottom>
 </BorderPane>

@@ -1,76 +1,82 @@
 package ClientModle;
 
-public class TradeRecord {
-    private int tradeId;
-    private boolean type;
-    private int fundId;
-    private String stockCode;
-    private int amount;
-    private double price;
-    private String time;
-    private boolean status;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
-    public boolean isStatus() {
-        return status;
+public class TradeRecord {
+	private final StringProperty stockCode;
+	private final StringProperty tradeId;
+	private final StringProperty amount;
+    private final StringProperty price;
+    private final StringProperty type;
+    private final StringProperty time;
+    private final StringProperty status;
+    
+    public TradeRecord(String stockCode, String tradeId, String amount,
+    		String price, String type,String time,String status) {
+    	this.stockCode = new SimpleStringProperty(stockCode);
+    	this.tradeId = new SimpleStringProperty(tradeId);
+    	this.amount = new SimpleStringProperty(amount);
+    	this.price = new SimpleStringProperty(price);
+    	this.type = new SimpleStringProperty(type);
+    	this.time = new SimpleStringProperty(time);
+    	this.status = new SimpleStringProperty(status);
     }
 
     public String getStockCode() {
-        return stockCode;
+    	return stockCode.get();
     }
-
-    public int getFundId() {
-        return fundId;
+    
+    public StringProperty stockCodeProperty() {
+    	return stockCode;
     }
-
-    public double getPrice() {
-        return price;
+    
+    public String gettradeId() {
+    	return tradeId.get();
     }
-
-    public int getAmount() {
-        return amount;
+    
+    public StringProperty tradeIdProperty() {
+    	return tradeId;
     }
-
-    public int getTradeId() {
-        return tradeId;
+    
+    public String getamount() {
+    	return amount.get();
     }
-
-    public String getTime() {
-        return time;
+    
+    public StringProperty amountProperty() {
+    	return amount;
     }
-
-    public void setStockCode(String stockCode) {
-        this.stockCode = stockCode;
+    
+    public String getprice() {
+    	return price.get();
     }
-
-    public void setFundId(int fundId) {
-        this.fundId = fundId;
+    
+    public StringProperty priceProperty() {
+    	return price;
     }
-
-    public void setTime(String time) {
-        this.time = time;
+    
+    public String gettype() {
+    	return type.get();
     }
-
-    public void setPrice(double price) {
-        this.price = price;
+    
+    public StringProperty typeProperty() {
+    	return type;
     }
-
-    public void setStatus(boolean status) {
-        this.status = status;
+    
+    public String gettime() {
+    	return time.get();
     }
-
-    public void setAmount(int amount) {
-        this.amount = amount;
+    
+    public StringProperty timeProperty() {
+    	return time;
     }
-
-    public void setTradeId(int tradeId) {
-        this.tradeId = tradeId;
+    public String getstatus() {
+    	return status.get();
     }
-
-    public void setType(boolean type) {
-        this.type = type;
+    
+    public StringProperty statusProperty() {
+    	return status;
     }
-
-    public boolean isType() {
-        return type;
-    }
+    
+    
 }

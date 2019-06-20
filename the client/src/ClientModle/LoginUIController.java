@@ -3,6 +3,7 @@ package ClientModle;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import com.google.gson.Gson;
 
@@ -12,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import ClientModle.FundAccount;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.PasswordField;
 import com.jfoenix.controls.JFXTextField;
@@ -35,6 +37,7 @@ public class LoginUIController implements Initializable {
 	@FXML 
 	public void LOGIN_M(ActionEvent event)
 	{
+	
 		FundAccount Login = new FundAccount();
 		String Accounts = account.getText();
 		String Passwords = password.getText();
@@ -44,6 +47,13 @@ public class LoginUIController implements Initializable {
 		Login.setFundId(Integer.parseInt(Accounts));
 	    Login.setPassword(Passwords);
 		String json = new Gson().toJson(Login);
+		/*Command t = new Command();
+		t.setFundId(10089);
+		t.setStockCode("000006.SZ");
+		String js = new Gson().toJson(t);
+		//t.setStockCount(10);
+		CustomResp ct = new HttpCommon().doHttp("/command/revoke", "POST", js);
+		System.out.println(ct.getResultJSON());*/
 		CustomResp cr = new HttpCommon().doHttp("/client/login", "POST", json);
 //     	new HttpCommon().doHttp("/stock/all", "GET", null);
      

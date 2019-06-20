@@ -5,7 +5,7 @@
 }
 
 #button {
-	-fx-background-image: url("../img/Bg.jpg");
+	-fx-background-image: url("../img/button.jpg");
     -fx-background-repeat: stretch;   
 }
 
@@ -14,8 +14,13 @@
 	-fx-background-size:contain;
     -fx-background-repeat: stretch;   
 }
+#pre_background {
+	-fx-background-image: url("../img/Bg1.jpg");
+	-fx-background-size:cover;
+    -fx-background-repeat: stretch;   
+}
 #Back {
-	-fx-background-image: url("../img/back.jpg");
+	-fx-background-image: url("../img/back1.png");
 	-fx-background-size:contain;
     -fx-background-repeat: stretch;   
 }
@@ -26,7 +31,7 @@
 }
 
 #left_background {
-	-fx-background-image: url("../img/left_background.jpg");
+	-fx-background-image: url("../img/Bg.jpg");
 	-fx-background-size:cover ;
     -fx-background-repeat: stretch;   
 }
